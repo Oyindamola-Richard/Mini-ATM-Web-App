@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini ATM</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="shortcut icon" href="/img/1658083887039.jpeg" type="image/x-icon">
+</head>
+<body>
+        <div class="gen-container">
+            <div class="head">
+                <h4 class="h-1">ATM</h4>
+                <h4 class="h-2">Card Return 🏧</h4>
+            </div>
+            <div class="mid-container">
+                <div class="about-container">
+                    <p class="aa">Welcome</p>
+                    <h2 class="bb1">Rioy Fresh</h2>
+                    <p class="aa">Account #1</p>
+                    <h2 class="bb">001234987</h2>
+                    <p class="aa">Savings #2</p>
+                    <h2 id="bba">$1000</h2>
+                </div>
+                <div class="button-container">
+                    <button onclick="withdraw()">Withdraw</button>
+                    <button onclick="deposit()">Deposit</button>
+                    <button onclick="payments()">Payments</button>
+                    <button onclick="airtime()">Airtime</button>
+                    <button onclick="settings()">Account Settings</button>
+                    <button onclick="others()">Other</button>
+                </div>
+            </div>
+            <center class="input-container">
+                <h3 id="disp" class="dispp"></h3>
+                <input type="text" placeholder="$" id="customerInput">
+            </center>
+        </div>
+        <script>
+            var balance = 1000
+            function withdraw(){
+                var amountEntered = Number(customerInput.value)
+                if(amountEntered>balance){
+                    disp.innerHTML = "Insufficient Fund"
+                    // alert("Insufficient Fund")
+                }
+                else if (amountEntered<0){
+                    disp.innerHTML = "Out of Bounds"
+                    // alert("Out of Bounds")
+                }
+                else if(amountEntered==""){
+                    disp.innerHTML = "Kindly enter an amount"
+                    // alert("Kindly enter an amount")
+                }
+                // else if(amountEntered!=Number){
+                //     disp.innerHTML = "Invalid"
+                // }
+                else{
+                    balance = balance - amountEntered
+                    bba.innerHTML = "<h4>$" + balance + "</h3>"
+                    // alert("Withdrawal Successful and your current balance is $" + balance)
+                }
+            }
+            function deposit(){
+                var amountEntered = Number(customerInput.value)
+                if(amountEntered<0){
+                    disp.innerHTML = "Enter Valid Digit"
+                }
+                else if(amountEntered==""){
+                    disp.innerHTML = "Kindly enter an amount"
+                }
+                // if(amountEntered!=Number){
+                //     disp.innerHTML = "Invalid"
+                // }
+                else{
+                    balance = balance + amountEntered
+                    bba.innerHTML = "<h4>$" + balance + "</h3>"
+                }
+            }
+        </script>
+</body>
+</html>
